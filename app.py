@@ -12,7 +12,8 @@ def home():
     # return render_template('home.html', name='Jordan')
 
 # Name of route and function does not need to match
-@app.route('/about')
-def about():
-    return 'This is a url shortener'
+@app.route('/your-url')
+def your_url():
+    # return 'This is a url shortener'
+    return render_template('your_url.html')
 
