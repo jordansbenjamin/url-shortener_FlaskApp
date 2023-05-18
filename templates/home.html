@@ -9,10 +9,24 @@
 <h2>{{ message }}</h2>
 {% endfor %}
 
+<!-- Form for URL shortening -->
 <form action="your-url" method="post">
     <label for="url">Website URL</label>
     <br>
     <input type="url" name="url" value="" required>
+    <br>
+    <label for="code">Short name</label>
+    <br>
+    <input type="text" name="code" value="" required>
+    <br>
+    <input type="submit" value="Shorten">
+</form>
+
+<!-- Form for file uploads -->
+<form action="your-url" method="post" enctype="multipart/form-data">
+    <label for="file">File</label>
+    <br>
+    <input type="file" name="file" value="" required>
     <br>
     <label for="code">Short name</label>
     <br>
