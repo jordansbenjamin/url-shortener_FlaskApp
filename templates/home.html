@@ -1,5 +1,16 @@
 <!-- <h1>This is home</h1> -->
-<h1>URL Shortener</h1>
-
 <!-- Using jinja templating to access the variable from the app.py file -->
 <!-- <h2>{{ name }}</h2> -->
+
+<h1>URL Shortener</h1>
+<form action="your-url">
+    <label for="url">Website URL</label>
+    <br>
+    <input type="url" name="url" value="" required>
+    <br>
+    <label for="code">Short name</label>
+    <br>
+    <input type="text" name="code" value="" required>
+    <br>
+    <input type="submit" value="Shorten">
+</form>
