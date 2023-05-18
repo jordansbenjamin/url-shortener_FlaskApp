@@ -1,5 +1,6 @@
 from flask import Flask, render_template, request, redirect, url_for
 import json
+import os.path
 
 app = Flask(__name__)
 
@@ -18,6 +19,15 @@ def your_url():
     # return 'This is a url shortener'
     if request.method == 'POST':
         urls = {}
+        # Prevents users from overriding exisitng data in the JSON file
+        # without this code it will only print one data in the JSON file and keeps overriding if new ones are added
+        if os.path.exists('urls.json'):
+            with open('urls.json') as urls_file:
+                urls = json.load(urls_file)
+        # This code prevents duplicate data entries and insteads redirects to the homepage
+        if request.form['code'] in urls.keys():
+            return redirect(url_for('home'))    
+
         urls[request.form['code']] = {'url': request.form['url']}
         with open('urls.json', 'w') as url_file:
             json.dump(urls, url_file)
