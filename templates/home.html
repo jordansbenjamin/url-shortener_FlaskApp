@@ -3,6 +3,12 @@
 <!-- <h2>{{ name }}</h2> -->
 
 <h1>URL Shortener</h1>
+
+<!-- Jinjas own way of writing code, its technically not python code -->
+{% for message in get_flashed_messages() %}
+<h2>{{ message }}</h2>
+{% endfor %}
+
 <form action="your-url" method="post">
     <label for="url">Website URL</label>
     <br>

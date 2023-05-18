@@ -1,8 +1,11 @@
-from flask import Flask, render_template, request, redirect, url_for
+from flask import Flask, render_template, request, redirect, url_for, flash
 import json
 import os.path
 
 app = Flask(__name__)
+# Allows us to securely send messages back and forth to the user
+# For the time being because we're in development we can provide any string for the key but when in production create a strong randomised key
+app.secret_key = 'wqkbhcwklqfbwklebh'
 
 # Homepage/base url route is generally indicated with a /
 @app.route('/')
@@ -26,6 +29,8 @@ def your_url():
                 urls = json.load(urls_file)
         # This code prevents duplicate data entries and insteads redirects to the homepage
         if request.form['code'] in urls.keys():
+            # Displays message to users when a short name has already been taken
+            flash('That short name has already been taken. Please select another name.')
             return redirect(url_for('home'))    
 
         urls[request.form['code']] = {'url': request.form['url']}
